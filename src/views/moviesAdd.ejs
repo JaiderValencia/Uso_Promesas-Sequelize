@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie add</title>
     <link rel='stylesheet' href='/css/style.css' />
+    <style>
+        .error{
+            border-color:red;
+        }
+    </style>
 </head>
 
 <body>
@@ -17,9 +22,9 @@
     <section class="formulario">
         <form action="/movies/create" method="POST">
             <label for="title">Title </label>
-            <p><input type="text" name="title" id="" required></p>
+            <p><input type="text" class="<%= locals.errors && errors.title ? 'error' : null %>" placeholder="<%= locals.errors && errors.title ? errors.title.msg : null %>" name="title" id="" required></p>
             <label for="rating">Rating </label>
-            <p><input type="number" name="rating" id="" required> </p>
+            <p><input type="number" class="<%= locals.errors && errors.title ? 'error' : null %>" placeholder="<%= locals.errors && errors.rating ? errors.rating.msg : null %>" name="rating" id="" required> </p>
             <label for="awards">Awards </label>
             <p><input type="number" name="awards" id="" required></p>
             <label for="release_date">Release date </label>

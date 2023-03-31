@@ -1,4 +1,5 @@
 const db = require('../database/models');
+const { validationResult } = require('express-validator');
 
 const controller = {
     list: (req, res) => {
@@ -54,6 +55,12 @@ const controller = {
     },
     create: async (req, res) => {
         try {
+            const errors = validationResult(req)
+
+            if (!errors.isEmpty()) {
+                return res.render("moviesAdd", { errors: errors.mapped() })
+            }
+
             const movieToPush = {
                 title: req.body.title,
                 rating: req.body.rating,
