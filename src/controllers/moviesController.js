@@ -118,6 +118,15 @@ const controller = {
         } catch (error) {
             res.send(eror)
         }
+    },
+    listWithGenres: async (req, res) => {
+        try {
+            const movies = await db.Movie.findAll({ include: ["genre", "actors"] });
+
+            res.send(movies);
+        } catch (error) {
+            res.send(error);
+        }
     }
 }
 

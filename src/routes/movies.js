@@ -14,5 +14,6 @@ router.post('/create', addValidations.arrayValidations, moviesController.create)
 router.get('/edit/:id', moviesController.edit);
 router.put('/update/:id', moviesController.update);
 router.delete("/delete/:id", moviesController.delete);
+router.get("/list", moviesController.listWithGenres);
 
 module.exports = router;
